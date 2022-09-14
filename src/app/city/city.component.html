@@ -1,0 +1,73 @@
+<form [formGroup]="register" (ngSubmit)="collectionregdata()">
+  <div class="mb-6 my-4 box">
+    <input type="text" class="form-control" formControlName="name" placeholder="Enter City Name">
+  </div>
+   <button type="submit" class="btn btn-primary button">Submit</button>
+</form>
+
+<div class="container">
+  <p class="design">Current weather and forecasts in your city</p>
+  <div class="card text-center design">
+    <div class="card-header">
+      <div class="header-left">
+        <img src="http://openweathermap.org/img/wn/{{ApiData.weather[0].icon}}.png" class="image" alt="">
+      </div>
+      <div class="header-middle">
+        <h1>{{!getItem?temp:FarenheitTemp}}&deg;{{!getItem?"C":"F"}}</h1>
+        <h2>{{ApiData.name}}</h2>
+        <p>{{ApiData.weather[0].description}}</p>
+      </div>
+      <div class="header-right">
+        <p>LAST UPDATE AT: {{today | date:'h:mm:ss'}}</p>
+        <h4>{{today| date:'h:mm'}}</h4>
+        <p> {{today | date:'EEEE, MMMM d'}}</p>
+      </div>
+    </div>
+
+
+    <div class="card-body">
+      <div class="body-left">
+        <p>Wind gust: {{ApiData.wind.gust}} </p>
+        <p>Wind speed:{{ApiData.wind.speed}} m/s</p>
+        <p>Humidity: {{ApiData.main.humidity}}%</p>
+        <p>Pressure: {{getItem?ApiData.main.pressure:presuremesure}}{{getItem? " hPa":" mmHg"}}</p>
+      </div>
+      <div class="body-right">
+        <p> Cloudiness: {{ApiData.weather[0].description}}</p>
+        <!-- <p>Sunrise: {{ApiData.sys.sunrise |date:'h:mm'}}</p> -->
+        <p>sunrise : {{date|date:' h:mm'}}</p>
+        <p>Sunset :  {{dateconvertion|date:' h:mm'}}</p>
+      </div>
+    </div>
+
+
+    <div class="card-footer itemlist">
+      <div class="name">Forecast for {{forecastDays}} days</div>
+      <div class="forecast">
+        <ul *ngFor="let data of firstweekForecast;" class="list1">
+          <li>{{data.date | date: 'EEE dd MMM'}} </li>
+          <li><img src="http://openweathermap.org/img/wn/{{data.icon}}.png" alt=""></li>
+          <li>{{!getItem?data.tempDay:data.tempDayConvertion}}&deg;{{!getItem?"C":"F"}}</li>
+          <li>{{!getItem?data.tempNight:data.tempNightConvertion}}&deg;{{!getItem?"C":"F"}}</li>
+          <li>{{data.description}}</li>
+        </ul>
+
+        <ng-container *ngIf="weeklyforecast">
+          <ul *ngFor="let data of secondweekForecast;" class="list2">
+            <li>{{data.date | date: 'EEE dd MMM'}} </li>
+            <li><img src="http://openweathermap.org/img/wn/{{data.icon}}.png" alt=""></li>
+            <li>{{!getItem?data.tempDay:data.tempDayConvertion}}&deg;{{!getItem?"C":"F"}}</li>
+            <li>{{!getItem?data.tempNight:data.tempNightConvertion}}&deg;{{!getItem?"C":"F"}}</li>
+            <li>{{data.description}}</li>
+          </ul>
+        </ng-container>
+      </div>
+    </div>
+
+    <div *ngIf="secondweekForecast.length>0 ">
+      <button class="btn" (click)="secondWeek()">
+        {{!weeklyforecast ? 'More' : 'Less'}}
+      </button>
+    </div>
+  </div>
+</div>

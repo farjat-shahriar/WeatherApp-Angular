@@ -1,0 +1,61 @@
+.design{
+    height: 100%;
+    width: 75%;
+    margin-left: 120px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-body{
+    display: flex;
+    justify-content:space-between; 
+   
+}
+.card-header{
+    display: flex;
+   justify-content: space-around;
+   background: none;
+}
+.header-left{
+    padding-right: 90px;
+}
+.header-right{
+    padding-left: 60px;
+}
+.body-left{
+    padding-right: 90px;
+}
+.body-right{
+    padding-left: 60px;
+}
+.forecast{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 5PX;
+}
+.list1{
+    padding-left: 10px;
+   padding-bottom: 10PX; 
+}
+.box{
+    height: 100%;
+    width: 40%;
+   margin-left: 400px;
+}
+.button{
+   margin-left: 860px;
+   top: 10px;
+}
+.name{
+    padding-bottom: 20px;
+}
+.image{
+    height: 100px;
+    width: 70px;
+}
+.itemlist{
+ margin-left: 2px;
+ padding-left: 2px;
+}

@@ -1,0 +1,20 @@
+
+nav{
+    background-color: white;
+    box-shadow: 0.1;
+    color: black;
+}
+.toggle{
+    padding-right: 300px;
+    padding-bottom: 20px;
+}
+
+.img{
+    background-color: none;
+    margin-left: 340px;
+    padding-bottom: 24px;
+}
+.weather{
+    padding-right: 490px;
+ color: gray;
+}
